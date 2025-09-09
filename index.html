@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <title>تلاوات الشيخ ياسر الدوسري</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@200;300;400;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 3D Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #00d4ff, #ff6b35);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            33% { transform: translateY(-100px) rotate(120deg); opacity: 1; }
+            66% { transform: translateY(-50px) rotate(240deg); opacity: 0.7; }
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1"><stop offset="0%" stop-color="%2300d4ff" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><circle cx="500" cy="500" r="400" fill="url(%23grad1)"/></svg>');
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .main-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+            margin-bottom: 1rem;
+            transform: perspective(1000px) rotateY(10deg);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: brightness(1) drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+            to { filter: brightness(1.2) drop-shadow(0 0 20px rgba(0, 212, 255, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #b8b8b8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav a:hover {
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            border-radius: 2px;
+        }
+
+        /* Recitations Grid */
+        .recitations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .recitation-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateY(5deg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recitation-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .recitation-card:hover {
+            transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .recitation-card:hover::before {
+            opacity: 1;
+            animation: shine 1.5s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(45deg) translate(-100%, -100%); }
+            100% { transform: rotate(45deg) translate(100%, 100%); }
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: rotate3d 10s linear infinite;
+        }
+
+        @keyframes rotate3d {
+            from { transform: rotateY(0deg) rotateX(0deg); }
+            to { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        .card-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .card-info {
+            font-size: 0.9rem;
+            color: #b8b8b8;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .play-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .play-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: perspective(1000px) rotateX(10deg);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #b8b8b8;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+        }
+
+        .footer-text {
+            color: #b8b8b8;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            animation: socialFloat 3s ease-in-out infinite;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2) rotateY(180deg);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        @keyframes socialFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .recitations-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .nav {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 1rem 0;
+                text-align: center;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(0, 212, 255, 0.2);
+            border-top: 3px solid #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Audio Controls */
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #ff6b35);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .time-display {
+            font-size: 0.8rem;
+            color: #b8b8b8;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .volume-slider {
+            width: 70px;
+            -webkit-appearance: none;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00d4ff;
+            cursor: pointer;
+        }
+
+        /* Now Playing Indicator */
+        .now-playing {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.3s ease;
+        }
+
+        .now-playing.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .now-playing-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #00d4ff, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+        }
+
+        .now-playing-text {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Now Playing Indicator -->
+    <div class="now-playing" id="nowPlaying">
+        <div class="now-playing-icon">♪</div>
+        <div class="now-playing-text" id="nowPlayingText">جاري التشغيل...</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#home">الرئيسية</a>
+        <a href="#recitations">التلاوات</a>
+        <a href="#about">عن الشيخ</a>
+        <a href="#contact">التواصل</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="header" id="home">
+        <div>
+            <h1 class="main-title">تلاوات الشيخ ياسر الدوسري</h1>
+            <p class="subtitle">أجمل التلاوات القرآنية بصوت عذب وخاشع</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Statistics Section -->
+      
+
+        <!-- Recitations Section -->
+        <section class="section fade-in" id="recitations">
+            <h2 class="section-title">مكتبة التلاوات</h2>
+            <div class="recitations-grid">
+                <div class="recitation-card">
+                    <div class="card-icon">🕌</div>
+                    <h3 class="card-title">سورة البقرة</h3>
+                    <p class="card-info">أطول سور القرآن الكريم، تحتوي على آية الكرسي وخواتيم البقرة</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/002.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">سورة آل عمران</h3>
+                    <p class="card-info">تحتوي على قصة مريم عليها السلام وميلاد عيسى عليه السلام</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/003.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">🌙</div>
+                    <h3 class="card-title">سورة يوسف</h3>
+                    <p class="card-info">قصة أحسن القصص، قصة النبي يوسف عليه السلام</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/012.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">🌟</div>
+                    <h3 class="card-title">سورة الكهف</h3>
+                    <p class="card-info">سورة مستحبة لقراءتها يوم الجمعة، تحتوي على قصص عظيمة</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/018.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">🏔️</div>
+                    <h3 class="card-title">سورة مريم</h3>
+                    <p class="card-info">تحكي قصة مريم عليها السلام وقصص الأنبياء</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/019.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">🕊️</div>
+                    <h3 class="card-title">سورة الرحمن</h3>
+                    <p class="card-info">عروس القرآن، تذكر نعم الله العظيمة على عباده</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/055.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">⭐</div>
+                    <h3 class="card-title">سورة الواقعة</h3>
+                    <p class="card-info">تصف أحوال الناس يوم القيامة وجزاءهم</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/056.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">🌺</div>
+                    <h3 class="card-title">سورة الملك</h3>
+                    <p class="card-info">المانعة من عذاب القبر، سورة الملكوت</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/067.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recitation-card">
+                    <div class="card-icon">💫</div>
+                    <h3 class="card-title">سورة القيامة</h3>
+                    <p class="card-info">تصف أهوال يوم القيامة وأحوال الناس فيه</p>
+                    <div class="audio-player" data-src="https://server11.mp3quran.net/yasser/075.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section fade-in" id="about">
+            <h2 class="section-title">عن الشيخ ياسر الدوسري</h2>
+            <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%); backdrop-filter: blur(20px); border-radius: 20px; padding: 3rem; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 2; color: #e0e0e0; font-family: 'Amiri', serif;">
+                    الشيخ ياسر الدوسري من أشهر القراء في العالم الإسلامي، يتميز بصوته العذب وتلاوته الخاشعة التي تأسر القلوب. 
+                    حفظ القرآن الكريم في سن مبكرة وأصبح إماماً وخطيباً في الحرم المكي الشريف. 
+                    تلاواته منتشرة في جميع أنحاء العالم ويستمع إليها الملايين من المسلمين.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <p class="footer-text">جميع الحقوق محفوظة © 2025 - EH Mods</p>
+        <!--<div class="social-links">
+            <a href="#" class="social-link">📧</a>
+            <a href="#" class="social-link">📱</a>
+            <a href="#" class="social-link">🌐</a>
+            <a href="#" class="social-link">📺</a>
+        </div>-->
+    </footer>
+
+    <script>
+        // Global variables
+        let currentAudio = null;
+        let currentButton = null;
+        let isPlaying = false;
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 8 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Audio player functionality
+        function togglePlay(button) {
+            const audioPlayer = button.closest('.audio-player');
+            const audioSrc = audioPlayer.getAttribute('data-src');
+            const cardTitle = audioPlayer.closest('.recitation-card').querySelector('.card-title').textContent;
+            
+            // If the same audio is already playing, pause it
+            if (currentAudio && currentAudio.src === audioSrc && isPlaying) {
+                pauseAudio();
+                return;
+            }
+            
+            // If a different audio is playing, stop it first
+            if (currentAudio && currentAudio.src !== audioSrc) {
+                pauseAudio();
+            }
+            
+            // Create new audio element if needed
+            if (!currentAudio || currentAudio.src !== audioSrc) {
+                currentAudio = new Audio(audioSrc);
+                currentAudio.preload = 'metadata';
+                
+                // Set up event listeners for the new audio
+                currentAudio.addEventListener('loadedmetadata', function() {
+                    const timeDisplay = audioPlayer.querySelector('.time-display');
+                    const duration = formatTime(this.duration);
+                    timeDisplay.textContent = `00:00 / ${duration}`;
+                });
+                
+                currentAudio.addEventListener('timeupdate', function() {
+                    const progressBar = audioPlayer.querySelector('.progress-bar');
+                    const timeDisplay = audioPlayer.querySelector('.time-display');
+                    const currentTime = formatTime(this.currentTime);
+                    const duration = formatTime(this.duration);
+                    
+                    progressBar.style.width = (this.currentTime / this.duration) * 100 + '%';
+                    timeDisplay.textContent = `${currentTime} / ${duration}`;
+                });
+                
+                currentAudio.addEventListener('ended', function() {
+                    pauseAudio();
+                    resetAudioPlayer(audioPlayer);
+                });
+                
+                currentAudio.addEventListener('error', function() {
+                    showError('تعذر تحميل التلاوة. يرجى المحاولة مرة أخرى.');
+                    pauseAudio();
+                    resetAudioPlayer(audioPlayer);
+                });
+            }
+            
+            // Play the audio
+            currentAudio.play()
+                .then(() => {
+                    isPlaying = true;
+                    button.textContent = '⏸';
+                    button.style.background = 'linear-gradient(135deg, #ff6b35, #00d4ff)';
+                    currentButton = button;
+                    
+                    // Show now playing indicator
+                    showNowPlaying(cardTitle);
+                })
+                .catch(error => {
+                    console.error('Error playing audio:', error);
+                    showError('تعذر تشغيل التلاوة. يرجى المحاولة مرة أخرى.');
+                });
+        }
+
+        function pauseAudio() {
+            if (currentAudio) {
+                currentAudio.pause();
+                isPlaying = false;
+                
+                if (currentButton) {
+                    currentButton.textContent = '▶';
+                    currentButton.style.background = 'linear-gradient(135deg, #00d4ff, #ff6b35)';
+                }
+                
+                // Hide now playing indicator
+                hideNowPlaying();
+            }
+        }
+
+        function resetAudioPlayer(audioPlayer) {
+            const button = audioPlayer.querySelector('.play-btn');
+            const progressBar = audioPlayer.querySelector('.progress-bar');
+            const timeDisplay = audioPlayer.querySelector('.time-display');
+            
+            button.textContent = '▶';
+            button.style.background = 'linear-gradient(135deg, #00d4ff, #ff6b35)';
+            progressBar.style.width = '0%';
+            timeDisplay.textContent = '00:00 / 00:00';
+        }
+
+        function seekAudio(event, progressContainer) {
+            if (!currentAudio) return;
+            
+            const rect = progressContainer.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const percentage = x / rect.width;
+            const seekTime = percentage * currentAudio.duration;
+            
+            currentAudio.currentTime = seekTime;
+        }
+
+        function changeVolume(slider) {
+            if (currentAudio) {
+                currentAudio.volume = slider.value;
+            }
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '00:00';
+            
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function showNowPlaying(title) {
+            const nowPlaying = document.getElementById('nowPlaying');
+            const nowPlayingText = document.getElementById('nowPlayingText');
+            
+            nowPlayingText.textContent = `جاري التشغيل: ${title}`;
+            nowPlaying.classList.add('active');
+        }
+
+        function hideNowPlaying() {
+            const nowPlaying = document.getElementById('nowPlaying');
+            nowPlaying.classList.remove('active');
+        }
+
+        function showError(message) {
+            // Create error notification
+            const errorDiv = document.createElement('div');
+            errorDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255, 0, 0, 0.8);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                z-index: 10000;
+                font-family: 'Cairo', sans-serif;
+            `;
+            errorDiv.textContent = message;
+            
+            document.body.appendChild(errorDiv);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                document.body.removeChild(errorDiv);
+            }, 3000);
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth scrolling
+        function smoothScroll(target) {
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Add click events to navigation
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('href');
+                smoothScroll(target);
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            // Hide loading screen
+            document.getElementById('loading').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+            }, 500);
+            
+            // Create particles
+            createParticles();
+            
+            // Initial animation check
+            handleScrollAnimations();
+        });
+
+        // Scroll event listener
+        window.addEventListener('scroll', handleScrollAnimations);
+
+        // Add dynamic title animation
+        const title = document.querySelector('.main-title');
+        let titleColorIndex = 0;
+        const titleColors = [
+            'linear-gradient(135deg, #00d4ff, #ff6b35, #00ff88)',
+            'linear-gradient(135deg, #ff6b35, #00ff88, #00d4ff)',
+            'linear-gradient(135deg, #00ff88, #00d4ff, #ff6b35)'
+        ];
+
+        setInterval(() => {
+            titleColorIndex = (titleColorIndex + 1) % titleColors.length;
+            title.style.background = titleColors[titleColorIndex];
+            title.style.webkitBackgroundClip = 'text';
+            title.style.backgroundClip = 'text';
+        }, 3000);
+
+        // Add hover sound effect simulation
+        document.querySelectorAll('.recitation-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'perspective(1000px) rotateY(0deg) translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateY(5deg) translateY(0px) scale(1)';
+            });
+        });
+
+        // Add counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    counter.textContent = Math.floor(current);
+                }, 20);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats');
+        let counterAnimated = false;
+        
+        function checkStatsAnimation() {
+            if (!counterAnimated && statsSection) {
+                const rect = statsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    animateCounters();
+                    counterAnimated = true;
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', checkStatsAnimation);
+        
+        // 3D card tilt effect
+        document.querySelectorAll('.recitation-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateY(5deg) translateY(0px)';
+            });
+        });
+        
+        // Add floating animation to icons
+        document.querySelectorAll('.card-icon').forEach((icon, index) => {
+            icon.style.animationDelay = `${index * 0.2}s`;
+        });
+        
+        // Parallax effect for header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // Add typing effect to subtitle
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+        
+        // Start typing effect after page load
+        setTimeout(() => {
+            const subtitle = document.querySelector('.subtitle');
+            if (subtitle) {
+                const originalText = subtitle.textContent;
+                typeWriter(subtitle, originalText, 100);
+            }
+        }, 2000);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowUp':
+                    window.scrollBy(0, -100);
+                    break;
+                case 'ArrowDown':
+                    window.scrollBy(0, 100);
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    if (currentAudio) {
+                        if (isPlaying) {
+                            pauseAudio();
+                        } else {
+                            togglePlay(currentButton);
+                        }
+                    }
+                    break;
+                case 'Home':
+                    smoothScroll('#home');
+                    break;
+                case 'End':
+                    smoothScroll('#contact');
+                    break;
+            }
+        });
+        
+        // Add progress indicator
+        function addProgressIndicator() {
+            const progress = document.createElement('div');
+            progress.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 3px;
+                background: linear-gradient(90deg, #00d4ff, #ff6b35);
+                z-index: 9999;
+                transition: width 0.3s ease;
+            `;
+            document.body.appendChild(progress);
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.pageYOffset / (document.body.scrollHeight - window.innerHeight)) * 100;
+                progress.style.width = scrolled + '%';
+            });
+        }
+        
+        addProgressIndicator();
+
+        // Pause audio when page is hidden
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && isPlaying) {
+                pauseAudio();
+            }
+        });
+    </script>
+</body>
+</html>
