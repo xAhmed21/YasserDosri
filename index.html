@@ -7,7 +7,8 @@
 
     <title>تلاوات الشيخ ياسر الدوسري</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@200;300;400;600;700;900&display=swap');
+     
+     @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@200;300;400;600;700;900&display=swap');
         
         * {
             margin: 0;
@@ -546,9 +547,26 @@
         .now-playing-text {
             font-size: 0.9rem;
         }
+         .prayers-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #ff6b35, #00d4ff);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 <body>
+    <a href="tela.html" class="prayers-button">انتقال لتلاوات الفروض</a>
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="loading-spinner"></div>

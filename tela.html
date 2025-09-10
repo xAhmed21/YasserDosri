@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>تلاوات الشيخ ياسر الدوسري - صلوات الفروض</title>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Now Playing Indicator -->
+    <div class="now-playing" id="nowPlaying">
+        <div class="now-playing-icon">♪</div>
+        <div class="now-playing-text" id="nowPlayingText">جاري التشغيل...</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#home">الرئيسية</a>
+        <a href="#recitations">التلاوات</a>
+        <a href="#about">عن الشيخ</a>
+        <a href="#contact">التواصل</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="header" id="home">
+        <div>
+            <h1 class="main-title">تلاوات الشيخ ياسر الدوسري</h1>
+            <p class="subtitle">تسجيلات من صلوات الفروض</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Recitations Section -->
+        <section class="section fade-in" id="recitations">
+            <h2 class="section-title">مكتبة التلاوات من الفروض</h2>
+            <div class="recitations-grid">
+
+                <!-- الفجر -->
+                <div class="recitation-card">
+                    <div class="card-icon">🌅</div>
+                    <h3 class="card-title">صلاة الفجر</h3>
+                    <p class="card-info">تلاوة خاشعة من صلاة الفجر.</p>
+                    <div class="audio-player" data-src="https://tilawatalharamain1.com/uploads/makki/9/2-1447/tajrobah/2025-08-03-02-25-24-9443214.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <a class="download-btn" href="https://tilawatalharamain1.com/uploads/makki/9/2-1447/tajrobah/2025-08-03-02-25-24-9443214.mp3" download>⬇ تحميل</a>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الظهر -->
+                <div class="recitation-card">
+                    <div class="card-icon">☀</div>
+                    <h3 class="card-title">صلاة مغرب</h3>
+                    <p class="card-info">تلاوة من صلاة المغرب بصوت عذب.</p>
+                    <div class="audio-player" data-src="https://tilawatalharamain1.com/uploads/makki/1447/2-2-47/yaldosry/2025-07-27-16-28-33-7498622.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <a class="download-btn" href="https://tilawatalharamain1.com/uploads/makki/1447/2-2-47/yaldosry/2025-07-27-16-28-33-7498622.mp33" download>⬇ تحميل</a>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- العصر -->
+                <div class="recitation-card">
+                    <div class="card-icon">⛅</div>
+                    <h3 class="card-title">صلاة فجر</h3>
+                    <p class="card-info">تلاوة من صلاة فجر.</p>
+                    <div class="audio-player" data-src="https://tilawatalharamain1.com/uploads/makki/10-2-1447/2/yaldosry/2025-08-04-02-54-47-7604599.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <a class="download-btn" href="https://tilawatalharamain1.com/uploads/makki/10-2-1447/2/yaldosry/2025-08-04-02-54-47-7604599.mp3" download>⬇ تحميل</a>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المغرب -->
+                <div class="recitation-card">
+                    <div class="card-icon">🌇</div>
+                    <h3 class="card-title">صلاة المغرب</h3>
+                    <p class="card-info">تلاوة من صلاة المغرب.</p>
+                    <div class="audio-player" data-src="https://tilawatalharamain1.com/uploads/makki/47/2/yaldosry/2025-07-28-16-18-22-6365041.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <a class="download-btn" href="https://tilawatalharamain1.com/uploads/makki/47/2/yaldosry/2025-07-28-16-18-22-6365041.mp3" download>⬇ تحميل</a>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- العشاء -->
+                <div class="recitation-card">
+                    <div class="card-icon">🌙</div>
+                    <h3 class="card-title">صلاة العشاء</h3>
+                    <p class="card-info">تلاوة من صلاة العشاء.</p>
+                    <div class="audio-player" data-src="https://tilawatalharamain1.com/uploads/makki/47/2/yaldosry/2025-07-27-17-51-37-4049780.mp3">
+                        <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                        <a class="download-btn" href="https://tilawatalharamain1.com/uploads/makki/47/2/yaldosry/2025-07-27-17-51-37-4049780.mp3" download>⬇ تحميل</a>
+                        <div class="audio-controls">
+                            <div class="progress-container" onclick="seekAudio(event, this)">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="time-display">00:00 / 00:00</div>
+                            <div class="volume-control">
+                                <span>🔊</span>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1" oninput="changeVolume(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section fade-in" id="about">
+            <h2 class="section-title">عن الشيخ ياسر الدوسري</h2>
+            <div class="about-text">
+                <p>
+                    الشيخ ياسر الدوسري من أشهر القراء في العالم الإسلامي، يتميز بصوته العذب وتلاوته الخاشعة التي تأسر القلوب. 
+                    حفظ القرآن الكريم في سن مبكرة وأصبح إماماً وخطيباً في الحرم المكي الشريف. 
+                    تلاواته منتشرة في جميع أنحاء العالم ويستمع إليها الملايين من المسلمين.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <p class="footer-text">جميع الحقوق محفوظة © 2025 - EH Mods</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

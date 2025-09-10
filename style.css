@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@200;300;400;600;700;900&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.particles { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
+.header {
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: radial-gradient(ellipse at center, rgba(0,212,255,0.1) 0%, transparent 70%);
+}
+
+.main-title {
+    font-family:'Amiri', serif;
+    font-size:4rem;
+    font-weight:700;
+    background: linear-gradient(135deg, #00d4ff, #ff6b35, #00ff88);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 50px rgba(0,212,255,0.5);
+    margin-bottom:1rem;
+}
+
+.subtitle { font-size:1.5rem; color:#b8b8b8; margin-bottom:2rem; }
+
+.nav { position: fixed; top:20px; right:20px; z-index:1000; background: rgba(255,255,255,0.1); padding:10px 20px; border-radius:50px; }
+
+.nav a { color:#fff; text-decoration:none; margin:0 10px; padding:8px 16px; border-radius:25px; transition: all 0.3s ease; }
+
+.nav a:hover { background: linear-gradient(135deg,#00d4ff,#ff6b35); transform:translateY(-2px); }
+
+.container { max-width:1200px; margin:0 auto; padding:2rem; }
+
+.section-title {
+    font-family:'Amiri', serif;
+    font-size:2.5rem;
+    text-align:center;
+    margin-bottom:3rem;
+    background: linear-gradient(135deg, #00d4ff, #fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    position:relative;
+}
+
+.recitations-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; }
+
+.recitation-card {
+    background: rgba(255,255,255,0.05);
+    border-radius:20px;
+    padding:2rem;
+    border:1px solid rgba(255,255,255,0.1);
+    position:relative;
+    overflow:hidden;
+    transition: all 0.3s ease;
+}
+
+.recitation-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,212,255,0.2); }
+
+.card-icon { width:60px; height:60px; margin:0 auto 1rem; background: linear-gradient(135deg,#00d4ff,#ff6b35); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; }
+
+.card-title { font-family:'Amiri', serif; font-size:1.3rem; text-align:center; margin-bottom:1rem; color:#00d4ff; }
+
+.card-info { font-size:0.9rem; text-align:center; margin-bottom:1rem; color:#b8b8b8; }
+
+.audio-player { background: rgba(0,0,0,0.3); border-radius:15px; padding:1rem; position:relative; }
+
+.play-btn {
+    width:50px; height:50px; border-radius:50%; background: linear-gradient(135deg,#00d4ff,#ff6b35);
+    border:none; color:white; font-size:1.2rem; cursor:pointer; margin:0 auto; display:block;
+}
+
+.download-btn {
+    display:block;
+    text-align:center;
+    margin-top:10px;
+    color:#fff;
+    text-decoration:none;
+    font-size:0.9rem;
+    background: linear-gradient(135deg,#00d4ff,#ff6b35);
+    padding:5px 10px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.download-btn:hover { transform:scale(1.1); }
+
+.audio-controls { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:10px; }
+
+.progress-container { flex-grow:1; height:5px; background: rgba(255,255,255,0.2); border-radius:5px; cursor:pointer; position:relative; }
+
+.progress-bar { height:100%; background: linear-gradient(90deg,#00d4ff,#ff6b35); width:0%; border-radius:5px; }
+
+.time-display { font-size:0.8rem; color:#b8b8b8; min-width:80px; text-align:center; }
+
+.volume-control { display:flex; align-items:center; gap:5px; }
+
+.volume-slider { width:70px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px; outline:none; }
+
+.volume-slider::-webkit-slider-thumb { width:12px; height:12px; border-radius:50%; background:#00d4ff; cursor:pointer; }
+
+.footer { text-align:center; padding:3rem 0; border-top:1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
+
+.footer-text { color:#b8b8b8; font-size:1rem; }
